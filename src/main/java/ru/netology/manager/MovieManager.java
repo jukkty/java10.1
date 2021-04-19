@@ -18,6 +18,8 @@ public class MovieManager {
     Movies[] result = new Movies[movies.length];
     // перебираем массив в прямом порядке
     // но кладём в результаты в обратном
+    if (movies.length > 10)
+      result = new Movies[10];
     for (int i = 0; i < result.length; i++) {
       int index = movies.length - i - 1;
       result[i] = movies[index];
@@ -25,11 +27,13 @@ public class MovieManager {
     return result;
   }
 
-  public Movies[] getLastFive() {
-    Movies[] result = new Movies[5];
+  public Movies[] getExactNumberOfMovies(int quantity) {
+    Movies[] result = new Movies[movies.length];
     // перебираем массив в прямом порядке
     // но кладём в результаты в обратном
-    for (int i = result.length - 5; i < result.length; i++) {
+    if (movies.length>quantity)
+      result = new Movies[quantity];
+    for (int i = 0; i < result.length; i++) {
       int index = movies.length - i - 1;
       result[i] = movies[index];
     }
