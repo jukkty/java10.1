@@ -4,6 +4,15 @@ import ru.netology.domain.Movies;
 
 public class MovieManager {
   private Movies[] movies = new Movies[0];
+  private int limit = 10;
+
+  public MovieManager() {
+  }
+
+  public MovieManager(int limit) {
+    this.limit = limit;
+  }
+
 
   public void add(Movies movie) {
     int length = movies.length + 1;
@@ -18,8 +27,8 @@ public class MovieManager {
     Movies[] result = new Movies[movies.length];
     // перебираем массив в прямом порядке
     // но кладём в результаты в обратном
-    if (movies.length > 10)
-      result = new Movies[10];
+    if (movies.length > limit)
+      result = new Movies[limit];
     for (int i = 0; i < result.length; i++) {
       int index = movies.length - i - 1;
       result[i] = movies[index];
@@ -27,12 +36,10 @@ public class MovieManager {
     return result;
   }
 
-  public Movies[] getExactNumberOfMovies(int quantity) {
+  public Movies[] getLimitedMovies() {
     Movies[] result = new Movies[movies.length];
-    // перебираем массив в прямом порядке
-    // но кладём в результаты в обратном
-    if (movies.length>quantity)
-      result = new Movies[quantity];
+    if (movies.length>limit)
+      result = new Movies[limit];
     for (int i = 0; i < result.length; i++) {
       int index = movies.length - i - 1;
       result[i] = movies[index];

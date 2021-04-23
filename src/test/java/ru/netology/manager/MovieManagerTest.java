@@ -40,6 +40,7 @@ public class MovieManagerTest {
   }
   @Test
   public void shouldShowLastFiveButAddedEleven(){
+    manager = new MovieManager(5);
     manager.add(first);     //1
     manager.add(second);    //2
     manager.add(third);     //3
@@ -51,7 +52,7 @@ public class MovieManagerTest {
     manager.add(ninth);     //9
     manager.add(tenth);     //10
     manager.add(eleventh);  //11
-    Movies[] actual = manager.getExactNumberOfMovies(5);
+    Movies[] actual = manager.getLimitedMovies();
     Movies[] expected = new Movies[] {eleventh,tenth,ninth,eighth,seventh};
     assertArrayEquals(expected,actual);
   }
@@ -59,7 +60,7 @@ public class MovieManagerTest {
   public void shouldShowLastFiveButAddedTwo() {
     manager.add(first);     //1
     manager.add(second);    //2
-    Movies[] actual = manager.getExactNumberOfMovies(5);
+    Movies[] actual = manager.getLimitedMovies();
     Movies[] expected = new Movies[]{second, first};
     assertArrayEquals(expected, actual);
   }
